@@ -18,16 +18,13 @@ app.get('/', (req, res) => {
 
 // show setting
 app.get('/restaurants/:restaurant_id', (req, res) => {
-  console.log(req.params)
   const showRestaurant = restaurantList.results.filter(restaurant => restaurant.id ==  req.params.restaurant_id)
-  console.log(showRestaurant)
   res.render('show', {restaurant: showRestaurant[0]})
 })
 
 //search setting
 app.get('/search',(req, res) => {
   const keyword = req.query.keyword
-  console.log(keyword)
   const searchResult = restaurantList.results.filter(restaurant => {
     return restaurant.name.toLowerCase().includes(keyword) || restaurant.category.toLowerCase().includes(keyword)
   })
